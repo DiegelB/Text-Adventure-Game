@@ -6,6 +6,7 @@ class NPCNames:
     def __init__(self):
         self.narrator = "Giles"
         self.king = "Wilhye"
+        self.landName = "Tavilon"
 NPC = NPCNames()
 
 player = [""]
@@ -40,15 +41,15 @@ class Rouge:
 
 def startGame(NPC):
     print(NPC.narrator + ":")
-    print("   Hello weary traveler, I hope your adventure has served you well.\n"
-          "   My name is %s I am Tavilon's travel guide and will be helping\n"
+    print("   Hello weary traveler, I hope your adventures have served you well.\n"
+          "   My name is %s I am %s's travel guide and will be helping\n"
           "   you prepare for vast adventures that await. King %s needs brave\n"
-          "   adventurers to scout the land's of Tavilon and find it's mysterious\n"
+          "   adventurers to scout the land's of %s and find it's mysterious\n"
           "   secrets. I can only train you in three arts, becoming a warrior,\n"
           "   wizard, or rouge. But do not worry, there are many more paths to\n"
           "   discover in these vast lands.\n"
           "\n"
-          "   So what will it be hero? 'warrior', 'wizard', or ' rouge'." % (NPC.narrator, NPC.king))
+          "   So what will it be hero? 'warrior', 'wizard', or ' rouge'." % (NPC.narrator, NPC.landName, NPC.king, NPC.landName))
 
 def heroClass(player):
     userClass = input(">> ")
@@ -114,8 +115,16 @@ def firstAct(NPC, p):
         print("   Alright, 'warrior', 'wizard', or ' rouge'.")
         heroClass(player)
     elif userInput == 'y' or userInput == 'Y':
-        print("   Welcome courageous %s" % (p[0].cName))
-    
+        pass
+    else:
+        print(NPC.narrator + ":")
+        print("   I do not understand you.")
+        firstAct(NPC, player)
+    print(NPC.narrator + ":")
+    print("   For your first mission %s, I need you to kill the monster that is\n"
+          "   occupying the cave north of here. It won't be an easy mission so\n"
+          "   please see the armory in town to gear up. It was great speaking\n"
+          "   with you today. I'm sure our paths will cross once again." % (p[0].name))
 startGame(NPC)
 heroClass(player)
 
